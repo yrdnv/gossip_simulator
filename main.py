@@ -3,8 +3,8 @@ import argparse
 
 
 parser = argparse.ArgumentParser(description="gossip protocol simulator")
-parser.add_argument('-n', type=int, action='store', default=9, help='total numbers of nodes')
-parser.add_argument('-i', type=int, action='store', default=1, help='iterations')
+parser.add_argument('-n', type=int, action='store', required=True, help='total numbers of nodes')
+parser.add_argument('-i', type=int, action='store', required=True, help='iterations')
 parser.add_argument('--double', action='store_true', help='use double activation')
 args = parser.parse_args()
 
@@ -26,7 +26,7 @@ class CustomNode(object):
 
 for _ in range(total_iterations):
 
-    x = random.randint(4, 6)    # how many attempts to send packet
+    x = random.randint(4, 5)    # how many attempts to send packet
     nodes = [CustomNode(x) for i in range(total_nodes)]
     infected_nodes = []
     current = random.choice(nodes)  # choosing which node will start send packets
